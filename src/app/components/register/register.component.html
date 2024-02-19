@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
     <p-card header="Register" [style]="{width:'360px'}">
         <div class="field">
             <label for="fullname">Full Name</label>
@@ -24,10 +24,14 @@
             <label for="confirmpasswrod">Confirm Password</label>
             <input type="password" pInputText formControlName="confirmpassword" class="w-full" name="confirmpassword" placeholder="TypeYourConfirmPassword"/>
             <small *ngIf="confirmpassword.invalid && (confirmpassword.dirty || confirmpassword.touched)" class="block p-error">Type correct Confirm password</small>
+            <small  class="block p-error" *ngIf="registerForm.errors ?. ['passwordMismatch'] && confirmpassword.valid && password.valid">Password Should Match</small>
             <div *ngIf="confirmpassword.errors?.['required']"></div>
             <div *ngIf="confirmpassword.errors?.['required']"></div>
         </div>
-        <p-button label="REGISTER" styleClass="w-full" [disabled]="registerForm.invalid"></p-button>
+        <p-button label="REGISTER" styleClass="w-full" [disabled]="registerForm.invalid"
+        type="submit"
+        >    
+        </p-button>
         <div class="mt-2">
             Already a member ? <a routerLink="/login">Login</a>
          </div>
