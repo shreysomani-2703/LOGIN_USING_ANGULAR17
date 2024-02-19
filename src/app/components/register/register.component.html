@@ -1,0 +1,36 @@
+<form [formGroup]="registerForm">
+    <p-card header="Register" [style]="{width:'360px'}">
+        <div class="field">
+            <label for="fullname">Full Name</label>
+            <input type="text" pInputText formControlName="fullname" class="w-full" name="fullname" placeholder="TypeYourFullName"/>
+            <small *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)" class="block p-error">Type your name</small>
+            <div *ngIf="fullname.errors?.['required']"></div>
+        </div>
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="text" pInputText formControlName="email" class="w-full" name="email" placeholder="TypeYourEmail"/>
+            <small *ngIf="email.invalid && (email.dirty || email.touched)" class="block p-error">Type correct email</small>
+            <div *ngIf="email.errors?.['required']"></div>
+            <div *ngIf="email.errors?.['required']"></div>
+        </div>
+        <div class="field">
+            <label for="passwrod">Password</label>
+            <input type="password" pInputText formControlName="password" class="w-full" name="password" placeholder="TypeYourPassword"/>
+            <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">Type correct password</small>
+            <div *ngIf="password.errors?.['required']"></div>
+            <div *ngIf="password.errors?.['required']"></div>
+        </div>
+        <div class="field">
+            <label for="confirmpasswrod">Confirm Password</label>
+            <input type="password" pInputText formControlName="confirmpassword" class="w-full" name="confirmpassword" placeholder="TypeYourConfirmPassword"/>
+            <small *ngIf="confirmpassword.invalid && (confirmpassword.dirty || confirmpassword.touched)" class="block p-error">Type correct Confirm password</small>
+            <div *ngIf="confirmpassword.errors?.['required']"></div>
+            <div *ngIf="confirmpassword.errors?.['required']"></div>
+        </div>
+        <p-button label="REGISTER" styleClass="w-full" [disabled]="registerForm.invalid"></p-button>
+        <div class="mt-2">
+            Already a member ? <a routerLink="/login">Login</a>
+         </div>
+    </p-card>
+
+</form>
